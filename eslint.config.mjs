@@ -2,7 +2,6 @@ import globals from 'globals';
 import pluginJs from '@eslint/js';
 import playwright from 'eslint-plugin-playwright';
 
-/** @type {import('eslint').Linter.Config[]} */
 export default [
   { languageOptions: { globals: globals.node } },
   {
@@ -11,7 +10,6 @@ export default [
       playwright,
     },
     rules: {
-      ...pluginJs.configs.recommended.rules,
       'no-unused-vars': 'error',
       'max-len': [
         'error',
