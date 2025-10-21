@@ -1,14 +1,13 @@
 import globals from 'globals';
-import pluginJs from '@eslint/js';
+import js from '@eslint/js';
 import playwright from 'eslint-plugin-playwright';
 
 export default [
-  { languageOptions: { globals: globals.node } },
+  js.configs.recommended,
+  playwright.configs['flat/recommended'],
   {
-    ...pluginJs.configs.recommended,
-    plugins: {
-      playwright,
-    },
+    languageOptions: { globals: globals.node },
+    plugins: { playwright },
     rules: {
       'no-unused-vars': 'error',
       'max-len': [
@@ -18,7 +17,6 @@ export default [
           comments: 80,
         },
       ],
-      ...playwright.configs['flat/recommended'].rules,
       'playwright/expect-expect': 'off',
     },
     ignores: [
